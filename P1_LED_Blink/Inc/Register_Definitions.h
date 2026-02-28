@@ -1,0 +1,54 @@
+
+#pragma once
+
+#ifndef REGISTER_DEFINITIONS_H_
+#define REGISTER_DEFINITIONS_H_
+/*PERIPHERAL BASE */
+#define PERIPH_BASE			(0x40000000L)
+
+/* AHB1 BUS ADDR*/
+#define AHB1PERIPH_OFFSET	(0x00000000L)
+#define AHB1PERIPH_BASE		(PERIPH_BASE + AHB1PERIPH_OFFSET)
+
+/* AHB2 BUS ADDR*/
+#define AHB2PERIPH_OFFSET	(0x08000000L)
+#define AHB2PERIPH_BASE		(PERIPH_BASE + AHB2PERIPH_OFFSET)
+
+/* AHB4 BUS ADDR */
+#define AHB4PERIPH_BASE		(0x58000000L)
+
+/* GPIOB ADDR */
+#define GPIOB_OFFSET 		(0x00000400L)
+#define GPIOB_BASE			(AHB2PERIPH_BASE + GPIOB_OFFSET)
+#define GPIOB_MODER_OFFSET	(0x00000000L)
+#define GPIOB_MODER 		*((volatile unsigned int *)(GPIOB_BASE + GPIOB_MODER_OFFSET))
+#define GPIOx_IDR_OFFSET	(0x00000010L)
+#define GPIOB_IDR			*((volatile unsigned int *)(GPIOB_BASE + GPIOx_IDR_OFFSET))
+#define GPIOx_ODR_OFFSET	(0x00000014L)
+#define GPIOB_ODR			*((volatile unsigned int *)(GPIOB_BASE + GPIOx_ODR_OFFSET))
+
+#define IN_MODE			(0x00)
+#define OUT_MODE		(0x01)
+#define AF_MODE			(0x02)
+#define ANALOG_MODE		(0x03)
+
+/*RCC ADDR */
+#define RCC_OFFSET			(0x00000000L)
+#define RCC_BASE			(AHB4PERIPH_BASE + RCC_OFFSET)
+#define RCC_AHB2ENR_OFFSET	(0x0000004CL)
+#define RCC_AHB2ENR			*((volatile unsigned int *)(RCC_BASE + RCC_AHB2ENR_OFFSET))
+
+/*USER LED PINS*/
+#define GPIOB_0				(1U << 0)
+#define GPIOB_1				(1U << 1)
+#define GPIOB_5				(1U << 5)
+
+#define USER_GREEN_LED	    GPIOB_0
+#define USER_RED_LED		GPIOB_1
+#define USER_BLUE_LED		GPIOB_5
+
+#define RCC_GPIOBEN_BIT_MASK	(1UL << 1)
+#define GPIOBEN					RCC_GPIOBEN_BIT_MASK
+
+
+#endif /* REGISTER_DEFINITIONS_H_ */
