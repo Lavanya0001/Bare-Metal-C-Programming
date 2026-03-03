@@ -39,9 +39,13 @@
 #define RCC_AHB2ENR			*((volatile unsigned int *)(RCC_BASE + RCC_AHB2ENR_OFFSET))
 
 /*USER LED PINS*/
-#define GPIOB_0				(1U << 0)
-#define GPIOB_1				(1U << 1)
-#define GPIOB_5				(1U << 5)
+#define bit_0	0
+#define bit_1	1
+#define bit_5	5
+
+#define GPIOB_0				(1U << bit_0)
+#define GPIOB_1				(1U << bit_1)
+#define GPIOB_5				(1U << bit_5)
 
 #define USER_GREEN_LED	    GPIOB_0
 #define USER_RED_LED		GPIOB_1

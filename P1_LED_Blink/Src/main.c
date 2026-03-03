@@ -7,10 +7,10 @@ void LED_Func()
 {	//Enabling RCC for GPIOB port
 	RCC_AHB2ENR |= GPIOBEN;
 
-	//First clear the Mode for B0
-	GPIOB_MODER &= ~(3U << GPIOB_0);
-	GPIOB_MODER &= ~(3U << GPIOB_1);
-	GPIOB_MODER &= ~(3U << GPIOB_5);
+	//First clear the Mode for B0,B1,B5
+	GPIOB_MODER &= ~(3U << bit_0);
+	GPIOB_MODER &= ~(3U << bit_1);
+	GPIOB_MODER &= ~(3U << bit_5);
 
 	//Set the MODE = OUTPUT
 	GPIOB_MODER |= (1U << 0);
