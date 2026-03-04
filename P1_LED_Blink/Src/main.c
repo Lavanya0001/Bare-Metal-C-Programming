@@ -29,6 +29,18 @@ void LED_Func()
 	GPIOB_ODR |= (USER_GREEN_LED);
 	GPIOB_ODR |= (USER_RED_LED);
 
+	while(1){
+		GPIOB_ODR ^= (USER_BLUE_LED);
+		for(int i = 0; i < 100000; i++){}
+
+		GPIOB_ODR ^= (USER_GREEN_LED);
+		for(int i = 0; i < 100000; i++){}
+
+		GPIOB_ODR ^= (USER_RED_LED);
+		for(int i = 0; i < 100000; i++){}
+
+	}
+
 }
 int main(){
 	LED_Func();
