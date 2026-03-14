@@ -1,0 +1,72 @@
+
+#pragma once
+
+#ifndef REGISTER_DEFINITIONS_H_
+#define REGISTER_DEFINITIONS_H_
+
+/*PERIPHERAL BASE */
+#define PERIPH_BASE			(0x40000000L)
+
+/* AHB1 BUS ADDR*/
+#define AHB1PERIPH_OFFSET	(0x00000000L)
+#define AHB1PERIPH_BASE		(PERIPH_BASE + AHB1PERIPH_OFFSET)
+
+/* AHB2 BUS ADDR*/
+#define AHB2PERIPH_OFFSET	(0x08000000L)
+#define AHB2PERIPH_BASE		(PERIPH_BASE + AHB2PERIPH_OFFSET)
+
+/* AHB4 BUS ADDR */
+#define AHB4PERIPH_BASE		(0x58000000L)
+#define GPIOx_MODER_OFFSET	(0x00000000L) //A - E and H
+
+#define GPIOB_OFFSET 		(0x00000400L)
+#define GPIOB_BASE			(AHB2PERIPH_BASE + GPIOB_OFFSET)
+#define GPIOB_MODER_OFFSET	(GPIOx_MODER_OFFSET)
+#define GPIOB_MODER 		*((volatile unsigned int *)(GPIOB_BASE + GPIOB_MODER_OFFSET))
+#define GPIOx_IDR_OFFSET	(0x00000010L) // A - D
+#define GPIOB_IDR			*((volatile unsigned int *)(GPIOB_BASE + GPIOx_IDR_OFFSET))
+#define GPIOx_ODR_OFFSET	(0x00000014L)
+#define GPIOB_ODR			*((volatile unsigned int *)(GPIOB_BASE + GPIOx_ODR_OFFSET))
+
+#define GPIOD_OFFSET		(0x00000C00L)
+#define GPIOD_BASE			(AHB2PERIPH_BASE + GPIOD_OFFSET)
+#define GPIOD_MODER_OFFSET	(GPIOx_MODER_OFFSET)
+#define GPIOD_MODER			*((volatile unsigned int *)(GPIOD_BASE + GPIOD_MODER_OFFSET))
+#define GPIOD_IDR_OFFSET	(GPIOx_IDR_OFFSET)
+#define GPIOD_IDR			*((volatile unsigned int *)(GPIOD_BASE + GPIOD_IDR_OFFSET))
+#define GPIOx_PUPDR_OFFSET	(0x0000000C)
+#define GPIOD_PUPDR_OFFSET	GPIOx_PUPDR_OFFSET
+#define GPIOD_PUPDR			*((volatile unsigned int *)(GPIOD_BASE + GPIOD_PUPDR_OFFSET))
+
+//MODER VALUES
+#define IN_MODE			(0x00)
+#define OUT_MODE		(0x01)
+#define AF_MODE			(0x02)
+#define ANALOG_MODE		(0x03)
+
+/*RCC ADDR */
+#define RCC_OFFSET			(0x00000000L)
+#define RCC_BASE			(AHB4PERIPH_BASE + RCC_OFFSET)
+#define RCC_AHB2ENR_OFFSET	(0x0000004CL)
+#define RCC_AHB2ENR			*((volatile unsigned int *)(RCC_BASE + RCC_AHB2ENR_OFFSET))
+
+/*USER LED PINS*/
+#define bit_0	0
+#define bit_1	1
+#define bit_5	5
+
+#define GPIOB_0				(1U << bit_0)
+#define GPIOB_1				(1U << bit_1)
+#define GPIOB_5				(1U << bit_5)
+
+#define USER_GREEN_LED	    GPIOB_0
+#define USER_RED_LED		GPIOB_1
+#define USER_BLUE_LED		GPIOB_5
+
+#define RCC_GPIOBEN_BIT_MASK	(1UL << 1)
+#define GPIOBEN					RCC_GPIOBEN_BIT_MASK
+
+#define RCC_GPIODEN_BIT_MASK	(1UL << 3)
+#define GPIODEN					RCC_GPIODEN_BIT_MASK
+
+#endif /* REGISTER_DEFINITIONS_H_ */
